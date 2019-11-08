@@ -1,0 +1,442 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class PokerHand 
+{
+    private PlayingCard[] hand = new PlayingCard[5];
+	
+    public PokerHand(String line) 
+    {
+	  int num1 = 0;
+	  int num2 = 0;
+	  int num3 = 0;
+	  int num4 = 0;
+	  int num5 = 0;
+	  
+	  char rank1 = line.charAt(1);
+	  
+	  char suit1 = line.charAt(2);
+	  
+	  char rank2 = line.charAt(5);
+	  
+	  char suit2 = line.charAt(6);
+	  
+	  char rank3 = line.charAt(9);
+	  
+	  char suit3 = line.charAt(10);
+	  
+	  char rank4 = line.charAt(13);
+	  
+	  char suit4 = line.charAt(14);
+	  
+	  char rank5 = line.charAt(17);
+	  
+	  char suit5 = line.charAt(18);
+	  
+	  if (Character.isDigit(rank1))
+	  {
+		  num1 = Integer.parseInt(String.valueOf(rank1));
+	  }
+		  if(rank1 == 'T')
+		  {
+			  num1 = 10;
+		  }
+		  
+		  if(rank1 == 'J')
+		  {
+			  num1 = 11;
+		  }
+		  
+		  if(rank1 == 'Q')
+		  {
+			  num1 = 12;
+		  }
+		  
+		  if(rank1 == 'K')
+		  {
+			  num1 = 13;
+		  }
+		  
+		  if(rank1 == 'A')
+		  {
+			  num1 = 14;
+		  }
+	  
+	  if (Character.isDigit(rank2))
+	  {
+		  num2 = Integer.parseInt(String.valueOf(rank2));
+	  }
+
+		  if(rank2 == 'T')
+		  {
+			  num2 = 10;
+		  }
+		  
+		  if(rank2 == 'J')
+		  {
+			  num2 = 11;
+		  }
+		  
+		  if(rank2 == 'Q')
+		  {
+			  num2 = 12;
+		  }
+		  
+		  if(rank2 == 'K')
+		  {
+			  num2 = 13;
+		  }
+		  
+		  if(rank2 == 'A')
+		  {
+			  num2 = 14;
+		  }
+
+	  
+	  if (Character.isDigit(rank3))
+	  {
+		  num3 = Integer.parseInt(String.valueOf(rank3));
+	  }
+
+		  if(rank3 == 'T')
+		  {
+			  num3 = 10;
+		  }
+		  
+		  if(rank3 == 'J')
+		  {
+			  num3 = 11;
+		  }
+		  
+		  if(rank3 == 'Q')
+		  {
+			  num3 = 12;
+		  }
+		  
+		  if(rank3 == 'K')
+		  {
+			  num3 = 13;
+		  }
+		  
+		  if(rank3 == 'A')
+		  {
+			  num3 = 14;
+		  }
+
+	  
+	  if (Character.isDigit(rank4))
+	  {
+		  num4 = Integer.parseInt(String.valueOf(rank4));
+	  }
+
+		  if(rank4 == 'T')
+		  {
+			  num4 = 10;
+		  }
+		  
+		  if(rank4 == 'J')
+		  {
+			  num4 = 11;
+		  }
+		  
+		  if(rank4 == 'Q')
+		  {
+			  
+			  num4 = 12;
+		  }
+		  
+		  if(rank4 == 'K')
+		  {
+			  num4 = 13;
+		  }
+		  
+		  if(rank4 == 'A')
+		  {
+			  num4 = 14;
+		  }
+
+	  
+	  if (Character.isDigit(rank5))
+	  {
+		  num5 = Integer.parseInt(String.valueOf(rank5));
+	  }
+
+		  if(rank5 == 'T')
+		  {
+			  num5 = 10;
+		  }
+		  
+		  if(rank5 == 'J')
+		  {
+			  num5 = 11;
+		  }
+		  
+		  if(rank5 == 'Q')
+		  {
+			  num5 = 12;
+		  }
+		  
+		  if(rank5 == 'K')
+		  {
+			  num5 = 13;
+		  }
+		  
+		  if(rank5 == 'A')
+		  {
+			  num5 = 14;
+		  }
+
+	  
+	  hand[0] = new PlayingCard(suit5, rank5, num5);
+	  hand[1] = new PlayingCard(suit4, rank4, num4);
+	  hand[2] = new PlayingCard(suit3, rank3, num3);
+	  hand[3] = new PlayingCard(suit2, rank2, num2);
+	  hand[4] = new PlayingCard(suit1, rank1, num1);
+	  
+	  
+	  
+	  Arrays.sort(hand); 
+	  
+	}
+    
+      public PokerHand (PlayingCard card1, PlayingCard card2, PlayingCard card3, PlayingCard card4, PlayingCard card5)
+      {
+    	  hand[0] = card1;
+    	  hand[1] = card2;
+    	  hand[2] = card3;
+    	  hand[3] = card4;
+    	  hand[4] = card5;
+      }
+
+    public int getCategory()
+	{
+    	if (checkifStraightFlush())
+    	{
+    		return 9;
+   	    }
+		if (checkifFourofaKind())
+		{
+			return 8;
+		}
+		
+		if (checkifFullhouse())
+		{
+			return 7;
+		}
+		if (checkifFlush())
+		{
+			return 6;
+		}
+		if (checkifStraight())
+		{
+			return 5;
+		}		
+		if (checkifThreeofaKind())
+		{
+			return 4;
+		}
+		if (checkifTwoPair())
+		{
+			return 3;
+		}
+		if (checkifOnePair())
+		{
+			return 2;
+		}
+				
+		return 1;
+	}
+
+
+    
+
+
+	public void selectionSort (PlayingCard[] hand)
+	{
+		int min;
+		PlayingCard temp;
+		
+		for (int index = 0; index < hand.length-1; index++)
+		{
+			min = index;
+			for (int scan = index + 1; scan < hand.length; scan++)
+			{
+				if (hand[scan].value < hand[min].value)
+				{
+					min = scan;
+				}
+				temp = hand[min];
+				hand[min] = hand[index];
+				hand[index] = temp;
+				
+			}
+		}
+	}
+	
+	private boolean checkifFlush()
+	{
+		for (int index = 0; index < hand.length-1; index++)
+		{
+			if (hand[index].suit != hand[index+1].suit)
+			{
+				return false;
+			}					
+		}
+		return true;
+	}
+	
+	private boolean checkifStraightFlush()
+	{
+		if ((hand[0].rank == '2') && (hand[1].rank == '3') && 
+				(hand[2].rank == '4') && (hand[3].rank == '5') && (hand[4].rank == 'A'))
+			{
+				for (int index = 0; index < hand.length-1; index++)
+				{
+					if(hand[index].suit != hand[index+1].suit)
+					{
+						return false;
+					}
+				}
+			}
+		   
+		for(int index = 0; index < hand.length-1; index++)
+		{
+			if(hand[index].value+1 != hand[index+1].value)
+			{
+				return false;
+			}
+		}
+		
+		for (int index = 0; index < hand.length-1; index++)
+		{
+			if(hand[index].suit != hand[index+1].suit)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private boolean checkifOnePair()
+	{
+		for (int index = 0; index < hand.length-1; index++)
+		{
+			if (hand[index].value == hand[index + 1].value)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private boolean checkifTwoPair()
+	{
+		if ((hand[0].value == hand[1].value) && 
+		    (hand[2].value == hand[3].value))
+		{
+			return true;
+		}
+		
+		if ((hand[1].value == hand[2].value) && 
+			(hand[3].value == hand[4].value))
+		{
+			return true;
+		}
+		
+		if ((hand[0].value == hand[1].value) && 
+			(hand[3].value == hand[4].value))
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	private boolean checkifFullhouse()
+    {
+		if ((hand[0].value == hand[1].value) && 
+		    (hand[1].value == hand[2].value)  && 
+			(hand[3].value == hand[4].value))
+			{
+				return true;
+			}
+				
+		if ((hand[0].value == hand[1].value) && 
+		    (hand[2].value == hand[3].value) && 
+			(hand[3].value == hand[4].value))
+			{
+				return true;
+			}
+		return false;
+    }
+	private boolean checkifStraight()
+	{
+		if ((hand[0].rank == '2') && (hand[1].rank == '3') && 
+			(hand[2].rank == '4') && (hand[3].rank == '5') && (hand[4].rank == 'A'))
+		{
+			return true;
+		}
+		   
+		for(int index = 0; index < hand.length-1; index++)
+		{
+			if(hand[index].value+1 != hand[index+1].value)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private boolean checkifFourofaKind()
+	{
+		if ((hand[1].value == hand[2].value) && 
+		   (hand[2].value == hand[3].value)  && 
+		   (hand[3].value == hand[4].value))
+		{
+			return true;
+		}
+		
+		if ((hand[0].value == hand[1].value) && 
+		    (hand[1].value == hand[2].value) && 
+		    (hand[2].value == hand[3].value))
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	private boolean checkifThreeofaKind()
+	{
+		if ((hand[1].value == hand[2].value) && (hand[2].value == hand[3].value))
+		{
+			return true;
+		}
+		
+		if ((hand[2].value == hand[3].value) && (hand[3].value == hand[4].value))
+		{
+			return true;
+		}
+		
+		if ((hand[0].value == hand[1].value) && (hand[1].value == hand[2].value))
+		{
+			return true;
+		}
+		return false;
+	}
+
+	
+
+	
+	
+	
+}
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
