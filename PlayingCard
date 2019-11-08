@@ -1,0 +1,54 @@
+public class PlayingCard implements Comparable
+{
+	public char suit;
+	public char rank;
+	public int value;
+
+	
+
+	public PlayingCard (char suit, char rank, int value)
+	{
+		this.suit = suit;
+		this.rank = rank;
+		this.value = value;
+		
+	}
+	
+	public int compareTo (PlayingCard card)
+	{
+		int result;
+		if (value < card.value)
+		{
+			result = -1;
+		}
+		else
+		{
+			if (value == card.value)
+			{
+				result=0;
+			}
+			else
+			{
+				result = 1;
+			}
+		}
+		
+		return result;
+	}
+	
+
+}
+
+
+
+
+
+	
+
+
+
+
+
+	
+
+
